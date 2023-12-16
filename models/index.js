@@ -3,7 +3,8 @@ const Product = require('./Product');
 const Category = require('./Category');
 const Tag = require('./Tag');
 const ProductTag = require('./ProductTag');
-const { HasMany } = require('sequelize');
+const { Sequelize } = require('sequelize');
+const sequelize = new Sequelize('../config/connection');
 
 const A = sequelize.define('A', /* ... */);
 const B = sequelize.define('B', /* ... */);
