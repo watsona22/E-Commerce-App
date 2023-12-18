@@ -3,11 +3,11 @@ const Product = require('./Product');
 const Category = require('./Category');
 const Tag = require('./Tag');
 const ProductTag = require('./ProductTag');
-const { Sequelize } = require('sequelize');
-const sequelize = new Sequelize('../config/connection');
+// const { Sequelize } = require('sequelize');
+// const sequelize = require('./config/connection');
 
-const A = sequelize.define('A', /* ... */);
-const B = sequelize.define('B', /* ... */);
+// const A = sequelize.define('A', /* ... */);
+// const B = sequelize.define('B', /* ... */);
 
 // A.hasOne(B); // A HasOne B
 // A.belongsTo(B); // A BelongsTo B
@@ -25,16 +25,15 @@ Category.hasMany(Product, {
   foreignKey: 'category_id',
 });
 // Products belongToMany Tags (through ProductTag)
-Product.belongsToMany(Tag, { through: 'ProductTag' });
+Product.belongsToMany(Tag, { through: ProductTag });
 
 // Tags belongToMany Products (through ProductTag)
 
-Tag.belongsToMany(Product, { through: 'ProductTag' });
+Tag.belongsToMany(Product, { through: ProductTag });
 
 
 module.exports = {
   Product,
   Category,
   Tag,
-  ProductTag,
 };
