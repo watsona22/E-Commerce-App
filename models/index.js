@@ -3,8 +3,7 @@ const Product = require('./Product');
 const Category = require('./Category');
 const Tag = require('./Tag');
 const ProductTag = require('./ProductTag');
-// const { Sequelize } = require('sequelize');
-// const sequelize = require('./config/connection');
+
 
 // const A = sequelize.define('A', /* ... */);
 // const B = sequelize.define('B', /* ... */);
@@ -36,4 +35,5 @@ module.exports = {
   Product,
   Category,
   Tag,
+  ProductTag,
 };

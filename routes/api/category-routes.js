@@ -22,7 +22,7 @@ router.get('/:id', async (req, res) => {
     const categoryData = await Category.findByPk(req.params.id, {
       include: [{ model: Product }],
       where: {
-        id: req.params.id,
+        category_id: req.params.category_id,
       },
     });
 
@@ -42,20 +42,31 @@ router.post('/', async (req, res) => {
     const categoryData = await Category.create(req.body);
     res.status(200).json(categoryData);
   } catch (err) {
-    res.status(400).json(err);
+    res.status(500).json(err);
   }
 });
 //https://stackoverflow.com/questions/75310890/updating-all-elements-from-a-json-file-via-express-router-put-with-sequelize
-router.put('/:id', async (req, res) => {
-  // update a category by its `id` value
-  const categoryData = req.body
-  await Category.update(categoryData, {
-    include: [{ model: Product }],
-    where: {
-      id: req.params.id,
+router.put("/:id", async (req, res) => {
+  // update category
+  try {
+    console.log('Request Body:', req.body);
+    console.log('Category Name:', req.body.category_name);
+    console.log('Category ID:', req.params.id);
+    const category = await Category.findOne({
+      where: {
+        id: req.params.id,
+      },
+    });
+    if (!category) {
+      return res.status(404).json({ message: 'No category found with that id!' });
     }
-  })
-  res.json.stringify(categoryData)
+    await Category.update(category, { where: { id: req.params.id } });
+
+    res.json({ message: 'Category updated!' });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json(err);
+  }
 });
 
 router.delete('/:id', async (req, res) => {
@@ -68,11 +79,13 @@ router.delete('/:id', async (req, res) => {
     });
 
     if (!categoryData) {
-      res.status(404).json({ message: 'No category found with that id!' });
+      res.status(404).json({ message: 'No category found for that id!' });
       return;
     }
-    res.status(200).json(categoryData);
+
+    res.status(200).json({ message: 'Category deleted!' });
   } catch (err) {
+    console.error(err);
     res.status(500).json(err);
   }
 });
