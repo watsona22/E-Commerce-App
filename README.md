@@ -18,7 +18,7 @@ This challenge utilized the node environment to create a program using dynamic J
 
 ## Usage
 
-The js file can be used to understand the dynamic code that supports the application.
+The js file can be used to understand the dynamic code that supports the application. Here is a link to the application walkthrough for your reference: https://drive.google.com/file/d/1hJqcBk89tnjuVrL4kxIKISwbPCzQj3lJ/view
 
 ## Credits
 The project was completed with help from the course materials and assistance from Bootcamp tutor, Erik Hirsch.
