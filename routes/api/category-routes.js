@@ -47,26 +47,26 @@ router.post('/', async (req, res) => {
 });
 //https://stackoverflow.com/questions/75310890/updating-all-elements-from-a-json-file-via-express-router-put-with-sequelize
 router.put("/:id", async (req, res) => {
-  // update category
-  try {
-    console.log('Request Body:', req.body);
-    console.log('Category Name:', req.body.category_name);
-    console.log('Category ID:', req.params.id);
-    const category = await Category.findOne({
+
+  Category.update(
+    {
+      // All the fields you can update and the data attached to the request body.
+      category_name: req.body.category_name,
+    },
+    {
+      //specifies records to be updated
+      // Gets the books based on the isbn given in the request parameters
       where: {
         id: req.params.id,
+        //where isbn exists we'll edit info with info above
       },
-    });
-    if (!category) {
-      return res.status(404).json({ message: 'No category found with that id!' });
     }
-    await Category.update(category, { where: { id: req.params.id } });
-
-    res.json({ message: 'Category updated!' });
-  } catch (err) {
-    console.error(err);
-    res.status(500).json(err);
-  }
+  )
+    .then((categoryUpdated) => {
+      // Sends the updated book as a json response
+      res.json(categoryUpdated);
+    })
+    .catch((err) => res.json(err));
 });
 
 router.delete('/:id', async (req, res) => {
