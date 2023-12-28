@@ -63,17 +63,29 @@ router.post('/', async (req, res) => {
 
 router.put('/:id', async (req, res) => {
   // update product
-  console.log('Request Body:', req.body);
-  console.log('Product Name:', req.body.product_name);
-  console.log('Product ID:', req.params.id);
-  const product = await Product.findOne({
-    where: {
-      id: req.params.id,
+  Product.update(
+    {
+      // All the fields you can update and the data attached to the request body.
+      product_name: req.body.product_name,
+      price: req.body.price,
+      stock: req.body.stock,
     },
-  });
-  await Product.update(product, { where: { id: req.params.id } })
-  res.json({ message: 'Product updated!' })
+    {
+      //specifies records to be updated
+      // Gets the product based on the id given in the request parameters
+      where: {
+        id: req.params.id,
+        //where id exists we'll edit info with info above
+      },
+    }
+  )
+    .then((productUpdated) => {
+      // Sends the updated product as a json response
+      res.json(productUpdated);
+    })
+    .catch((err) => res.json(err));
 });
+
 
 router.delete('/:id', async (req, res) => {
   try {
