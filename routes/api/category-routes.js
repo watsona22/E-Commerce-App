@@ -45,7 +45,6 @@ router.post('/', async (req, res) => {
     res.status(500).json(err);
   }
 });
-//https://stackoverflow.com/questions/75310890/updating-all-elements-from-a-json-file-via-express-router-put-with-sequelize
 router.put("/:id", async (req, res) => {
 
   Category.update(
@@ -55,15 +54,15 @@ router.put("/:id", async (req, res) => {
     },
     {
       //specifies records to be updated
-      // Gets the books based on the isbn given in the request parameters
+      // Gets the category based on the id given in the request parameters
       where: {
         id: req.params.id,
-        //where isbn exists we'll edit info with info above
+        //where id exists we'll edit info with info above
       },
     }
   )
     .then((categoryUpdated) => {
-      // Sends the updated book as a json response
+      // Sends the updated category as a json response
       res.json(categoryUpdated);
     })
     .catch((err) => res.json(err));

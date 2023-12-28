@@ -46,28 +46,27 @@ router.post('/', async (req, res) => {
   }
 });
 
-router.put('/:id', async (req, res) => {
-  try {
-    console.log('Request Body:', req.body);
-    console.log('Tag Name:', req.body.tag_name);
-    console.log('Tag ID:', req.params.id);
-
-    // Update a tag's name by its `id` value
-    const tag = await Tag.findOne({
+router.put("/:id", async (req, res) => {
+  // update tag
+  Tag.update(
+    {
+      // All the fields you can update and the data attached to the request body.
+      tag_name: req.body.tag_name,
+    },
+    {
+      //specifies records to be updated
+      // Gets the tag based on the id given in the request parameters
       where: {
         id: req.params.id,
+        //where id exists we'll edit info with info above
       },
-    });
-    if (!tag) {
-      return res.status(404).json({ message: 'No tag found with that id!' });
     }
-    await Tag.update(tag, { where: { id: req.params.id } });
-
-    res.json({ message: 'Tag updated!' });
-  } catch (err) {
-    console.error(err);
-    res.status(500).json(err);
-  }
+  )
+    .then((tagUpdated) => {
+      // Sends the updated category as a json response
+      res.json(tagUpdated);
+    })
+    .catch((err) => res.json(err));
 });
 
 router.delete('/:id', async (req, res) => {
