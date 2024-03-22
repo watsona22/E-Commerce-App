@@ -1,6 +1,7 @@
 # E-commerce
-The purpose of this challenge was to create a command-line application in node using the mysql2 and sequelize packages. This program was designed to allow users to build an ecommerce application so as to understand their architecture. The application uses mysql2, and sequelize to query the database and make dynamic changes to the database based on api calls made using Express.
+The associated project is a command-line application in node using the mysql2 and sequelize packages. This program was designed to allow users to build an ecommerce application so as to understand their architecture. The application uses mysql2, and sequelize to query the database and make dynamic changes to the database based on api calls made using Express.
 
+```
 The acceptance criteria were as follows: 
 GIVEN a functional Express.js API
 WHEN I add my database name, MySQL username, and MySQL password to an environment variable file
@@ -13,6 +14,7 @@ WHEN I open API GET routes in Insomnia for categories, products, or tags
 THEN the data for each of these routes is displayed in a formatted JSON
 WHEN I test API POST, PUT, and DELETE routes in Insomnia
 THEN I am able to successfully create, update, and delete data in my database
+```
 
 This challenge utilized the node environment to create a program using dynamic Javascript. There were helpful error messages in the terminal to direct progress. The MySQL2 and Sequelize documentation were referenced throughout the project. There were hurdles building the correct route for each case. I had to rely on logs to identify where problems occurred. Problems pertaining to the router.put calls to update a record persisted. I will have to revisit this at a later date. Communicating between the db and api routes using Insomnia was not second nature. I realized how important it is to maintain consistencies between like routers in their various folders, so that they have similar statuses and messages - it made debugging easier. Previous eureka moments were just as valuable here - reformatting code, implementing clear naming convention, and notating often.  I am still working to make this a natural part of the build process. 
 
