@@ -1,8 +1,10 @@
 # E-commerce
-The associated project is a command-line application in node using the mysql2 and sequelize packages. This program was designed to allow users to build an ecommerce application so as to understand their architecture. The application uses mysql2, and sequelize to query the database and make dynamic changes to the database based on api calls made using Express.
+This program was designed to allow users to build an ecommerce application so as to understand their architecture. The application uses mysql2, and sequelize to query the database and make dynamic changes to the database based on api calls made using Express.
 
-```
 The acceptance criteria were as follows: 
+
+# Acceptance Criteria
+```md
 GIVEN a functional Express.js API
 WHEN I add my database name, MySQL username, and MySQL password to an environment variable file
 THEN I am able to connect to a database using Sequelize
@@ -21,9 +23,6 @@ This challenge utilized the node environment to create a program using dynamic J
 ## Usage
 
 The js file can be used to understand the dynamic code that supports the application. Here is a link to the application walkthrough for your reference: https://drive.google.com/file/d/1qH1xPvzbtSmdtqmpc3rYsozHTW2zgFOu/view
-
-## Credits
-The project was completed with help from the course materials and assistance from Bootcamp tutor, Erik Hirsch.
 
 ## License
 
