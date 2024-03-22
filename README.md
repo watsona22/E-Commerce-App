@@ -1,9 +1,10 @@
 # E-commerce
+## Description
 This program was designed to allow users to build an ecommerce application so as to understand their architecture. The application uses mysql2, and sequelize to query the database and make dynamic changes to the database based on api calls made using Express.
 
 The acceptance criteria were as follows: 
 
-# Acceptance Criteria
+## Acceptance Criteria
 ```md
 GIVEN a functional Express.js API
 WHEN I add my database name, MySQL username, and MySQL password to an environment variable file
@@ -23,6 +24,8 @@ This challenge utilized the node environment to create a program using dynamic J
 ## Usage
 
 The js file can be used to understand the dynamic code that supports the application. Here is a link to the application walkthrough for your reference: https://drive.google.com/file/d/1qH1xPvzbtSmdtqmpc3rYsozHTW2zgFOu/view
+![Application Demo](demo.png)
+
 
 ## License
 
